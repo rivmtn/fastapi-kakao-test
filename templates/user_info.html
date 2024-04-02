@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Kakao Login Test.</title>
+</head>
+<body>
+<div>
+    <h1>사용자 정보</h1>
+    <fieldset>
+        <ul>
+            <li>회원번호 (id) : {{ id }}</li>
+            <li>연결하기 호출의 완료 여부 (has_signed_up) : {{ has_signed_up }}</li>
+            <li>서비스에 연결 완료된 시각, UTC* (connected_at) : {{ connected_at }}</li>
+            <li>카카오싱크 간편가입을 통해 로그인한 시각, UTC* (synched_at) : {{ synched_at }}</li>
+            <li>사용자 프로퍼티 (properties) :</li>
+            <ul>
+                <li>닉네임 (nickname) : {{ nickname }}</li>
+                <li>프로필 이미지 URL (profile_image) : {{ profile_image }}</li>
+                <li>썸네일 프로필 이미지 URL (thumbnail_image) : {{ thumbnail_image }}</li>
+            </ul>
+            <li>카카오계정 정보 (kakao_account) :</li>
+            <ul>
+                <li>사용자 동의 시 프로필 정보(닉네임/프로필 사진) (profile_needs_agreement) : {{ profile_needs_agreement }}</li>
+                <li>사용자 동의 시 닉네임 제공 가능 (profile_nickname_needs_agreement) : {{ profile_nickname_needs_agreement }}</li>
+                <li>사용자 동의 시 프로필 사진 제공 가능 (profile_image_needs_agreement) : {{ profile_image_needs_agreement }}</li>
+                <li>프로필 정보 (프로필 정보) :</li>
+                <ul>
+                    <li>닉네임 (nickname) : {{ nickname }}</li>
+                    <li>프로필 미리보기 이미지 URL (thumbnail_image_url) : {{ thumbnail_image_url }}</li>
+                    <li>프로필 사진 URL (profile_image_url) : {{ profile_image_url }}</li>
+                    <li>프로필 사진 URL이 기본 프로필 사진 URL인지 여부 (is_default_image) : {{ is_default_image }}</li>
+                </ul>
+                <li>사용자 동의 시 카카오계정 이름 제공 가능 (name_needs_agreement) : {{ name_needs_agreement }}</li>
+                <li>카카오계정 이름 (name) : {{ user_name }}</li>
+                <li>사용자 동의 시 카카오계정 대표 이메일 제공 가능 (email_needs_agreement) : {{ email_needs_agreement }}</li>
+                <li>이메일 유효 여부 (is_email_valid) : {{ is_email_valid }}</li>
+                <li>이메일 인증 여부 (is_email_verified) : {{ is_email_verified }}</li>
+                <li>카카오계정 대표 이메일 (email) : {{ email }}</li>
+                <li>사용자 동의 시 연령대 제공 가능 (age_range_needs_agreement) : {{ age_range_needs_agreement }}</li>
+                <li>연령대 (age_range) : {{ age_range }}</li>
+                <li>사용자 동의 시 출생 연도 제공 가능 (birthyear_needs_agreement) : {{ birthyear_needs_agreement }}</li>
+                <li>출생 연도(YYYY 형식) (birthyear) : {{ birthyear }}</li>
+                <li>사용자 동의 시 생일 제공 가능 (birthday_needs_agreement) : {{ birthday_needs_agreement }}</li>
+                <li>생일(MMDD 형식) (birthday) : {{ birthday }}</li>
+                <li>생일 타입 (birthday_type) : {{ birthday_type }}</li>
+                <li>사용자 동의 시 성별 제공 가능 (gender_needs_agreement) : {{ gender_needs_agreement }}</li>
+                <li>성별 (gender) : {{ gender }}</li>
+                <li>사용자 동의 시 전화번호 제공 가능 (phone_number_needs_agreement) : {{ phone_number_needs_agreement }}</li>
+                <li>카카오계정의 전화번호 (phone_number) : {{ phone_number }}</li>
+                <li>사용자 동의 시 CI 참고 가능 (ci_needs_agreement) : {{ ci_needs_agreement }}</li>
+                <li>연계정보 (ci) : {{ ci }}</li>
+                <li>CI 발급 시각, UTC* (ci_authenticated_at) : {{ ci_authenticated_at }}</li>
+            </ul>
+            <li>uuid 등 추가 정보 (for_partner) : {{ for_partner }}</li>
+<!--            <ul>-->
+<!--                <li>고유 ID (uuid) : {{ uuid }}</li>-->
+<!--            </ul>-->
+
+        </ul>
+    </fieldset>
+</div>
+<div>
+    <h1>로그아웃</h1>
+    <form action="{{SERVER_URL}}/logout" method="POST">
+        <input name="access_token" required="required" type="hidden" value="{{access_token}}">
+        <input name="target_id" required="required" type="hidden" value="{{id}}">
+        <input type="submit" value="확인">
+    </form>
+</div>
+</body>
+</html>

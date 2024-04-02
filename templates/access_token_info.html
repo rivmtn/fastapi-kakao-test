@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Kakao Login Test.</title>
+</head>
+<body>
+<div>
+    <h1>토큰 정보</h1>
+    <fieldset>
+        <ul>
+            <li>회원번호 (id) : {{ id }}</li>
+            <li>액세스 토큰 만료 시간(초) (expires_in) : {{ expires_in }}</li>
+            <li>토큰이 발급된 앱 ID (app_id) : {{ app_id }}</li>
+        </ul>
+    </fieldset>
+</div>
+<div>
+    <h1>로그아웃</h1>
+    <form action="{{SERVER_URL}}/logout" method="POST">
+        <input name="access_token" required="required" type="hidden" value="{{access_token}}">
+        <input name="target_id" required="required" type="hidden" value="{{id}}">
+        <input type="submit" value="확인">
+    </form>
+</div>
+</body>
+</html>

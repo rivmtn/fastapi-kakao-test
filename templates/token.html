@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Kakao Login Test.</title>
+</head>
+<body>
+<div>
+    <h1>토큰</h1>
+    <fieldset>
+        <ul>
+            <li>토큰 타입, bearer로 고정 (token_type) : {{ token_type }}</li>
+            <li>사용자 액세스 토큰 값 (access_token) : {{ access_token }}</li>
+            <li>ID 토큰 값 (id_token) : {{ id_token }}</li>
+            <li>액세스 토큰과 ID 토큰의 만료 시간(초) (expires_in) : {{ expires_in }}</li>
+            <li>사용자 리프레시 토큰 값 (refresh_token) : {{ refresh_token }}</li>
+            <li>리프레시 토큰 만료 시간(초) (refresh_token_expires_in) : {{ refresh_token_expires_in }}</li>
+        </ul>
+    </fieldset>
+</div>
+<div>
+    <h1>토큰 갱신하기</h1>
+    <form action="{{SERVER_URL}}/refresh" method="POST">
+        <input name="refresh_token" required="required" type="hidden" value="{{refresh_token}}">
+        <input type="submit" value="확인">
+    </form>
+</div>
+<div>
+    <h1>토큰 정보 보기</h1>
+    <form action="{{SERVER_URL}}/access_token_info" method="POST">
+        <input name="access_token" required="required" type="hidden" value="{{access_token}}">
+        <input type="submit" value="확인">
+    </form>
+</div>
+<div>
+    <h1>사용자 정보 가져오기</h1>
+    <form action="{{SERVER_URL}}/user_info" method="POST">
+        <input name="access_token" required="required" type="hidden" value="{{access_token}}">
+        <input type="submit" value="확인">
+    </form>
+</div>
+</body>
+</html>
